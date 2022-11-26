@@ -27,13 +27,20 @@ namespace First.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(corsOptions =>
+            {
+                corsOptions.AddPolicy("policy",
+                builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
 
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
+            }).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -49,13 +56,11 @@ namespace First.API
 
 
 
+
             services.AddScoped<IDbContext, DbContext>();
-           
             services.AddScoped<IAboutusRepository, AboutusRepository>();
             services.AddScoped<IHomeRepository, HomeRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
-
-
             services.AddScoped<IAboutusService, AboutusService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IStudentService, StudentService>();
@@ -99,6 +104,7 @@ namespace First.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors("policy");
 
             app.UseAuthorization();
 

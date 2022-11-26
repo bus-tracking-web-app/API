@@ -1,7 +1,9 @@
 ﻿using First.CORE.DATA;
 using First.CORE.SERVICE;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace First.API.Controllers
 {
@@ -45,6 +47,22 @@ namespace First.API.Controllers
         {
             _usersService.UpdateUser(user);
         }
+        [Route("uploadImage")]
+        [HttpPost]
+        public User UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine("D:\\AngularTutorial\\Client1\\Client\\BusTrackingAngular\\src\\assets\\images\\users", fileName);
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+            User item = new User();
+            item.Imagepath = fileName;
+            return item;
+        }
+
 
     }
 }
