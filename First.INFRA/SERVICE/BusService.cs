@@ -35,6 +35,11 @@ namespace First.INFRA.SERVICE
            return _busRepository.GetBusById(id);
         }
 
+        public List<Bu> searchByBusNumber(int bnum)
+        {
+            return _busRepository.searchByBusNumber(bnum);
+        }
+
         public void UpdateBus(Bu bus)
         {
             _busRepository.UpdateBus(bus);
