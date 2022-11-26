@@ -12,5 +12,6 @@ namespace First.CORE.SERVICE
         void CreateBus(Bu bus);
         void UpdateBus(Bu bus);
         void DeleteBus(int id);
+        List<Bu> searchByBusNumber(int bnum);
     }
 }

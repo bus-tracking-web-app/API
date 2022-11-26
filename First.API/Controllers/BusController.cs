@@ -21,6 +21,7 @@ namespace First.API.Controllers
             _busService.CreateBus(bus);
         }
         [HttpDelete]
+        [Route("delete/{id}")]
         public void DeleteBus(int id)
         {
             _busService.DeleteBus(id);
@@ -40,6 +41,12 @@ namespace First.API.Controllers
         public void UpdateBus(Bu bus)
         {
             _busService.UpdateBus(bus);
+        }
+        [HttpGet]
+        [Route("searchByBusNumber/{bnum}")]
+        public List<Bu> searchByBusNumber(int bnum)
+        {
+            return _busService.searchByBusNumber(bnum);
         }
     }
 }

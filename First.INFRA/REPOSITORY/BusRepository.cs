@@ -50,6 +50,14 @@ namespace First.INFRA.REPOSITORY
             return result.FirstOrDefault();
         }
 
+        public List<Bu> searchByBusNumber(int bnum)
+        {
+            var p = new DynamicParameters();
+            p.Add("bnum", bnum, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Bu> result = _dbContext.Connection.Query<Bu>("Bus_package.searchBusNumber", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
         public void UpdateBus(Bu bus)
         {
             var p = new DynamicParameters();

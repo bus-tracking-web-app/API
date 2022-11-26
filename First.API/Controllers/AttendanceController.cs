@@ -21,6 +21,7 @@ namespace First.API.Controllers
             _attendanceService.Createattendance(attendance);
         }
         [HttpDelete]
+        [Route("delete/{id}")]
         public void Deleteattendance(int id)
         {
             _attendanceService.Deleteattendance(id);
