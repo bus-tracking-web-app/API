@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using First.CORE.SERVICE;
 using System;
@@ -25,7 +26,12 @@ namespace First.INFRA.SERVICE
             _busRepository.DeleteBus(id);
         }
 
-        public List<Bu> GetAllBus()
+        public List<Bu> GetAll()
+        {
+           return _busRepository.GetAll();
+        }
+
+        public List<AllBus> GetAllBus()
         {
             return _busRepository.GetAllBus();
         }
@@ -35,7 +41,7 @@ namespace First.INFRA.SERVICE
            return _busRepository.GetBusById(id);
         }
 
-        public List<Bu> searchByBusNumber(int bnum)
+        public List<AllBus> searchByBusNumber(int bnum)
         {
             return _busRepository.searchByBusNumber(bnum);
         }

@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using First.CORE.COMMON;
 using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using System;
 using System.Collections.Generic;
@@ -36,9 +37,9 @@ namespace First.INFRA.REPOSITORY
             _dbContext.Connection.Execute("attendance_package.Deleteattendance", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<Attendance> GetAllattendance()
+        public List<AllAttendance> GetAllattendance()
         {
-            IEnumerable<Attendance> result = _dbContext.Connection.Query<Attendance>("attendance_package.GetAllattendance", commandType: CommandType.StoredProcedure);
+            IEnumerable<AllAttendance> result = _dbContext.Connection.Query<AllAttendance>("attendance_package.GetAllattendance", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 

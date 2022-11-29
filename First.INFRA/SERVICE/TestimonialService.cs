@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using First.CORE.SERVICE;
 using System;
@@ -30,9 +31,24 @@ namespace First.INFRA.SERVICE
             return _testimonialRepository.GETALLtestimonial();
         }
 
+        public List<TestimonialDTO> GETALLtestimonialDTO()
+        {
+            return _testimonialRepository.GETALLtestimonialDTO();
+        }
+
+        public List<Testimonialstatus> GETALLtestimonialStatus()
+        {
+            return _testimonialRepository.GETALLtestimonialStatus();
+        }
+
         public Testimonial GETtestimonialBYID(int id)
         {
             return _testimonialRepository.GETtestimonialBYID(id);
+        }
+
+        public Testimonialstatus GETtestimonialStatusBYID(int id)
+        {
+            return _testimonialRepository.GETtestimonialStatusBYID(id);
         }
 
         public void UPDATETESTIMONIAL(Testimonial testimonial)

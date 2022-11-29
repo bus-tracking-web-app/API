@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using First.CORE.COMMON;
 using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using System.Collections.Generic;
 using System.Data;
@@ -45,6 +46,23 @@ namespace First.INFRA.REPOSITORY
         {
             var res = _dbcontext.Connection.Query<User>("users_Package.GetAllUsers", commandType: CommandType.StoredProcedure);
             return res.ToList();
+
+
+        }
+
+        public List<UserRole> GetAllUsersWithRole()
+        {
+            var res = _dbcontext.Connection.Query<UserRole>("users_Package.GetAllUsersWithRole", commandType: CommandType.StoredProcedure);
+            return res.ToList();
+
+        }
+
+        public User GetByName(string name)
+        {
+            var p = new DynamicParameters();
+            p.Add("name",name, dbType: DbType.String, direction: ParameterDirection.Input);
+            var res = _dbcontext.Connection.Query<User>("users_package.GetByName", p, commandType: CommandType.StoredProcedure);
+            return res.FirstOrDefault();
         }
 
         public User GetUserById(int id)
@@ -59,7 +77,7 @@ namespace First.INFRA.REPOSITORY
         {
             var p = new DynamicParameters();
             p.Add("userid", user.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("fname", user.Username, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("fname", user.Fullname, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("uemail", user.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("uname", user.Username, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("upassword", user.Password, dbType: DbType.String, direction: ParameterDirection.Input);

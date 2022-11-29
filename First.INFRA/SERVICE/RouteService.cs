@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using First.CORE.SERVICE;
 using System;
@@ -27,6 +28,11 @@ namespace First.INFRA.SERVICE
         public List<Route> GetAllRoute()
         {
             return _routeRepository.GetAllRoute();
+        }
+
+        public List<RouteDTO> GetAllRouteDTO()
+        {
+            return _routeRepository.GetAllRouteDTO();
         }
 
         public Route GetRouteById(int id)

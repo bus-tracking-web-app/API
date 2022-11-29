@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.SERVICE;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -42,6 +43,12 @@ namespace First.API.Controllers
         {
             return _usersService.GetUserById(id);
         }
+        [HttpGet]
+        [Route("get/{name}")]
+        public User GetUserByName(string name)
+        {
+            return _usersService.GetByName(name);
+        }
         [HttpPut]
         public void UpdateUser(User user)
         {
@@ -62,6 +69,14 @@ namespace First.API.Controllers
             item.Imagepath = fileName;
             return item;
         }
+
+        [Route("userwithrole")]
+        [HttpGet]
+        public List<UserRole> GetAllUsersWithRole()
+        {
+            return _usersService.GetAllUsersWithRole();
+        }
+
 
 
     }

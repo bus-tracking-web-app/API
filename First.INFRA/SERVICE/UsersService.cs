@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using First.CORE.SERVICE;
 using System.Collections.Generic;
@@ -25,6 +26,17 @@ namespace First.INFRA.SERVICE
         public List<User> GetAllCourse()
         {
             return _usersRepository.GetAllCourse();
+
+        }
+
+        public List<UserRole> GetAllUsersWithRole()
+        {
+            return _usersRepository.GetAllUsersWithRole();
+        }
+
+        public User GetByName(string name)
+        {
+           return _usersRepository.GetByName(name);
         }
 
         public User GetUserById(int id)
