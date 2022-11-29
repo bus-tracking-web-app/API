@@ -40,8 +40,7 @@ namespace First.API
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
+            }).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -50,6 +49,7 @@ namespace First.API
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+
                 };
             });
 
@@ -57,13 +57,11 @@ namespace First.API
 
 
 
+
             services.AddScoped<IDbContext, DbContext>();
-           
             services.AddScoped<IAboutusRepository, AboutusRepository>();
             services.AddScoped<IHomeRepository, HomeRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
-
-
             services.AddScoped<IAboutusService, AboutusService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IStudentService, StudentService>();
