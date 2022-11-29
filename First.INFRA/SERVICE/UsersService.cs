@@ -34,6 +34,10 @@ namespace First.INFRA.SERVICE
             return _usersRepository.GetAllUsersWithRole();
         }
 
+        public User GetByName(string name)
+        {
+           return _usersRepository.GetByName(name);
+        }
 
         public User GetUserById(int id)
         {
