@@ -79,30 +79,7 @@ namespace First.API.Controllers
             }
         }
 
-        [Route("uploadImage")]
-        [HttpPost]
-        public Student UploadIMage()
-        {
-            try
-            {
-                var file = Request.Form.Files[0];
-                var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var fullPath = Path.Combine("C:\\Users\\Suzan\\Client\\BusTrackingAngular\\src\\assets\\images", fileName);
-
-                using (var stream = new FileStream(fullPath, FileMode.Create))
-                {
-                    file.CopyTo(stream);
-                }
-                Student item = new Student();
-                item.Imgpath = fileName;
-                return item;
-
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
+     
 
     }
 }
