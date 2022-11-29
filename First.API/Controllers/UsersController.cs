@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.SERVICE;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -62,6 +63,14 @@ namespace First.API.Controllers
             item.Imagepath = fileName;
             return item;
         }
+
+        [Route("userwithrole")]
+        [HttpGet]
+        public List<UserRole> GetAllUsersWithRole()
+        {
+            return _usersService.GetAllUsersWithRole();
+        }
+
 
 
     }
