@@ -1,8 +1,11 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.SERVICE;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace First.API.Controllers
 {
@@ -40,7 +43,7 @@ namespace First.API.Controllers
 
         [HttpGet]
         [Route("Get")]
-        public List<Student> GetAllStudent()
+        public List<AllInformationOfStudent> GetAllStudent()
         {
             return _studentService.GetAllStudent();
         }
@@ -50,6 +53,31 @@ namespace First.API.Controllers
         public Student GetAllStudentById(int id)
         {
             return _studentService.GetAllStudentById(id);
+        }
+
+        [Route("uploadImage")]
+        [HttpPost]
+        public Student UploadIMage()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                var fullPath = Path.Combine("C:\\Users\\Suzan\\Client\\BusTrackingAngular\\src\\assets\\images", fileName);
+
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                Student item = new Student();
+                item.Imgpath = fileName;
+                return item;
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
     }

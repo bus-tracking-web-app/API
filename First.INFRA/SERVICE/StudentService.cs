@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using First.CORE.SERVICE;
 using System;
@@ -27,7 +28,7 @@ namespace First.INFRA.SERVICE
             _studentRepository.DeleteStudent(id);
         }
 
-        public List<Student> GetAllStudent()
+        public List<AllInformationOfStudent> GetAllStudent()
         {
             return _studentRepository.GetAllStudent();
         }
