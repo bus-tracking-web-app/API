@@ -21,6 +21,7 @@ namespace First.API.Controllers
             _footerService.CreateFooter(footer);
         }
         [HttpDelete]
+        [Route("delete/{id}")]
         public void DeleteFooter(int id)
         {
             _footerService.DeleteFooter(id);
