@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using First.CORE.COMMON;
 using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using System;
 using System.Collections.Generic;
@@ -41,11 +42,31 @@ namespace First.INFRA.REPOSITORY
             return result.ToList();
         }
 
+        public List<TestimonialDTO> GETALLtestimonialDTO()
+        {
+            IEnumerable<TestimonialDTO> result = _dbContext.Connection.Query<TestimonialDTO>("testimonial_package.getAllTestimonialDTO", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public List<Testimonialstatus> GETALLtestimonialStatus()
+        {
+            IEnumerable<Testimonialstatus> result = _dbContext.Connection.Query<Testimonialstatus>("testimonial_package.getAllTestimonialStatus", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
         public Testimonial GETtestimonialBYID(int id)
         {
             var p = new DynamicParameters();
             p.Add("testimonialID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             IEnumerable<Testimonial> result = _dbContext.Connection.Query<Testimonial>("testimonial_package.GETtestimonialBYID", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
+        public Testimonialstatus GETtestimonialStatusBYID(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("testimonialStatusID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Testimonialstatus> result = _dbContext.Connection.Query<Testimonialstatus>("testimonial_package.getTestimonialStatusByID", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
 
