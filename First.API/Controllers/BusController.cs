@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.SERVICE;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,9 +28,15 @@ namespace First.API.Controllers
             _busService.DeleteBus(id);
         }
         [HttpGet]
-        public List<Bu> GetAllBus()
+        public List<AllBus> GetAllBus()
         {
             return _busService.GetAllBus();
+        }
+        [HttpGet]
+        [Route("get")]
+        public List<Bu> GetAll()
+        {
+            return _busService.GetAll();
         }
         [HttpGet]
         [Route("getById/{id}")]
@@ -44,7 +51,7 @@ namespace First.API.Controllers
         }
         [HttpGet]
         [Route("searchByBusNumber/{bnum}")]
-        public List<Bu> searchByBusNumber(int bnum)
+        public List<AllBus> searchByBusNumber(int bnum)
         {
             return _busService.searchByBusNumber(bnum);
         }

@@ -27,6 +27,11 @@ namespace First.INFRA.SERVICE
             return _usersRepository.GetAllCourse();
         }
 
+        public User GetByName(string name)
+        {
+           return _usersRepository.GetByName(name);
+        }
+
         public User GetUserById(int id)
         {
             return _usersRepository.GetUserById(id);

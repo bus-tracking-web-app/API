@@ -40,6 +40,12 @@ namespace First.API.Controllers
         {
             return _usersService.GetUserById(id);
         }
+        [HttpGet]
+        [Route("get/{name}")]
+        public User GetUserById(string name)
+        {
+            return _usersService.GetByName(name);
+        }
         [HttpPut]
         public void UpdateUser(User user)
         {

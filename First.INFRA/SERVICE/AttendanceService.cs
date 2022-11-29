@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using First.CORE.SERVICE;
 using System;
@@ -25,7 +26,7 @@ namespace First.INFRA.SERVICE
             _attendaneRepository.Deleteattendance(id);
         }
 
-        public List<Attendance> GetAllattendance()
+        public List<AllAttendance> GetAllattendance()
         {
          return  _attendaneRepository.GetAllattendance();
         }

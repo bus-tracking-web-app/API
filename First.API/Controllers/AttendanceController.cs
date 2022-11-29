@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.SERVICE;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,7 @@ namespace First.API.Controllers
             _attendanceService.Deleteattendance(id);
         }
         [HttpGet]
-        public List<Attendance> GetAllattendance()
+        public List<AllAttendance> GetAllattendance()
         {
             return _attendanceService.GetAllattendance();
         }

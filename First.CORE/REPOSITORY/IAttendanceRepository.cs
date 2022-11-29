@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ namespace First.CORE.REPOSITORY
 {
     public interface IAttendanceRepository
     {
-        List<Attendance> GetAllattendance();
+        List<AllAttendance> GetAllattendance();
         Attendance GetattendanceByStudentId(int id);
         void Createattendance(Attendance attendance);
         void Updateattendance(Attendance attendance);

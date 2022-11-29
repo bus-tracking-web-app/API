@@ -47,6 +47,14 @@ namespace First.INFRA.REPOSITORY
             return res.ToList();
         }
 
+        public User GetByName(string name)
+        {
+            var p = new DynamicParameters();
+            p.Add("name",name, dbType: DbType.String, direction: ParameterDirection.Input);
+            var res = _dbcontext.Connection.Query<User>("users_package.GetByName", p, commandType: CommandType.StoredProcedure);
+            return res.FirstOrDefault();
+        }
+
         public User GetUserById(int id)
         {
             var p = new DynamicParameters();

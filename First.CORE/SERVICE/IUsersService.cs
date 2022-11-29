@@ -10,6 +10,6 @@ namespace First.CORE.SERVICE
         void DeleteUser(int id);
         public void UpdateUser(User user);
         User GetUserById(int id);
-
+        User GetByName(string name);
     }
 }
