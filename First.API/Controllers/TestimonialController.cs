@@ -1,8 +1,11 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.SERVICE;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace First.API.Controllers
 {
@@ -35,17 +38,55 @@ namespace First.API.Controllers
             return _testimonialService.GETALLtestimonial();
         }
         [HttpGet]
+        [Route("GETALLtestimonialDTO")]
+        public List<TestimonialDTO> GETALLtestimonialDTO()
+        {
+            return _testimonialService.GETALLtestimonialDTO();
+        }
+        [HttpGet]
+        [Route("GETALLtestimonialStatus")]
+        public List<Testimonialstatus> GetTestimonialStatus()
+        {
+            return _testimonialService.GETALLtestimonialStatus();
+        }
+
+
+        [HttpGet]
         [Route("GETtestimonialBYID/{id}")]
         public Testimonial GETtestimonialBYID(int id)
         {
             return _testimonialService.GETtestimonialBYID(id);
         }
+
+        [HttpGet]
+        [Route("GETtestimonialStatusBYID/{id}")]
+        public Testimonialstatus GETtestimonialStatusBYID(int id)
+        {
+            return _testimonialService.GETtestimonialStatusBYID(id);
+        }
+
         [HttpPut]
         [Route("UPDATETESTIMONIAL")]
         public void UPDATETESTIMONIAL(Testimonial testimonial)
         {
             _testimonialService.UPDATETESTIMONIAL(testimonial);
         }
+        [Route("uploadImage")]
+        [HttpPost]
+        public Testimonial UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine("C:\\Users\\Qais\\Desktop\\client 11-26-2022\\Client\\BusTrackingAngular\\src\\assets\\images\\testimonial", fileName);
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+            Testimonial item = new Testimonial();
+            item.Imagepath = fileName;
+            return item;
+        }
+
 
     }
 }

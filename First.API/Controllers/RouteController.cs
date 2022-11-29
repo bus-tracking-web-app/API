@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.SERVICE;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +34,13 @@ namespace First.API.Controllers
         {
             return _routeService.GetAllRoute();
         }
+        [HttpGet]
+        [Route("GetAllRouteDTO")]
+        public List<RouteDTO> GetRouteDTO()
+        {
+            return _routeService.GetAllRouteDTO();
+        }
+
         [HttpGet]
         [Route("GetRouteById/{id}")]
         public Route GetRouteById(int id)

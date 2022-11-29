@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using First.CORE.COMMON;
 using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,12 @@ namespace First.INFRA.REPOSITORY
         public List<Route> GetAllRoute()
         {
             IEnumerable<Route> result = _dbContext.Connection.Query<Route>("route_package.getallroute", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public List<RouteDTO> GetAllRouteDTO()
+        {
+            IEnumerable<RouteDTO> result = _dbContext.Connection.Query<RouteDTO>("route_package.getAllRouteDTO", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
