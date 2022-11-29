@@ -45,7 +45,7 @@ namespace First.API.Controllers
         }
         [HttpGet]
         [Route("get/{name}")]
-        public User GetUserById(string name)
+        public User GetUserByName(string name)
         {
             return _usersService.GetByName(name);
         }
