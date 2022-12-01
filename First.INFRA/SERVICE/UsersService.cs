@@ -23,9 +23,9 @@ namespace First.INFRA.SERVICE
             _usersRepository.DeleteUser(id);
         }
 
-        public List<User> GetAllCourse()
+        public List<User> GetAllUsers()
         {
-            return _usersRepository.GetAllCourse();
+            return _usersRepository.GetAllUsers();
 
         }
 

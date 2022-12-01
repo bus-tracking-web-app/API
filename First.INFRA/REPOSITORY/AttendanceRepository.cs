@@ -51,6 +51,20 @@ namespace First.INFRA.REPOSITORY
             return result.FirstOrDefault();
         }
 
+        public List<Attendancestatus> GetStatus()
+        {
+            IEnumerable<Attendancestatus> result = _dbContext.Connection.Query<Attendancestatus>("attendance_package.GetStatus", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public Attendancestatus GetStatusById(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("SId", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Attendancestatus> result = _dbContext.Connection.Query<Attendancestatus>("attendance_package.GetStatusById", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
         public void Updateattendance(Attendance attendance)
         {
             var p = new DynamicParameters();

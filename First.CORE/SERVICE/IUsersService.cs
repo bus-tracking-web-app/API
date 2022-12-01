@@ -6,7 +6,7 @@ namespace First.CORE.SERVICE
 {
     public interface IUsersService
     {
-        List<User> GetAllCourse();
+        List<User> GetAllUsers();
         List<UserRole> GetAllUsersWithRole();
         void CreateUser(User user);
         void DeleteUser(int id);
