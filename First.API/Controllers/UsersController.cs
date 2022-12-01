@@ -33,9 +33,10 @@ namespace First.API.Controllers
         }
 
         [HttpGet]
-        public List<User> GetAllCourse()
+        public List<User> GetAllUsers()
         {
-            return _usersService.GetAllCourse();
+            return _usersService.GetAllUsers();
+
         }
 
         [HttpGet("{id}")]

@@ -23,7 +23,7 @@ namespace First.INFRA.SERVICE
         }
      
 
-        Roundstatus IRoundService.GetRoundByID(int id)
+       public Roundstatus GetRoundByID(int id)
         {
             return _roundRepository.GetRoundByID(id);
         }
