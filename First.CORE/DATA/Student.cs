@@ -20,5 +20,6 @@ namespace First.CORE.DATA
         public virtual Bu Bus { get; set; }
         public virtual User Parent { get; set; }
         public virtual Roundstatus RoundNavigation { get; set; }
+
     }
 }
