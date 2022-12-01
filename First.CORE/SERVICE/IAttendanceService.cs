@@ -13,5 +13,7 @@ namespace First.CORE.SERVICE
         void Createattendance(Attendance attendance);
         void Updateattendance(Attendance attendance);
         void Deleteattendance(int id);
+        List<Attendancestatus> GetStatus();
+        Attendancestatus GetStatusById(int id);
     }
 }

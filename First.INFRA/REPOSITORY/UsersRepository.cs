@@ -42,7 +42,7 @@ namespace First.INFRA.REPOSITORY
 
         }
 
-        public List<User> GetAllCourse()
+        public List<User> GetAllUsers()
         {
             var res = _dbcontext.Connection.Query<User>("users_Package.GetAllUsers", commandType: CommandType.StoredProcedure);
             return res.ToList();

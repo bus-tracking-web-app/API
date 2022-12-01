@@ -43,5 +43,17 @@ namespace First.API.Controllers
         {
             _attendanceService.Updateattendance(attendance);
         }
+        [HttpGet]
+        [Route("getStatus")]
+        public List<Attendancestatus> GetStatus()
+        {
+            return _attendanceService.GetStatus();
+        }
+        [HttpGet]
+        [Route("getStatusById/{id}")]
+        public Attendancestatus GetStatusById(int id)
+        {
+            return _attendanceService.GetStatusById(id);
+        }
     }
 }
