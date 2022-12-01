@@ -77,7 +77,26 @@ namespace First.API.Controllers
             return _usersService.GetAllUsersWithRole();
         }
 
+        [Route("ParentCount")]
+        [HttpGet]
+        public int ParentCount()
+        {
+            return _usersService.ParentCount();
+        }
 
+        [Route("dcount")]
+        [HttpGet]
+        public int DriverCount()
+        {
+            return _usersService.DriverCount();
+        }
+
+        [Route("tcount")]
+        [HttpGet]
+        public int TeacherCount()
+        {
+            return _usersService.TeacherCount();
+        }
 
     }
 }

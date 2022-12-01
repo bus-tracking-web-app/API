@@ -14,6 +14,9 @@ namespace First.CORE.REPOSITORY
         User GetUserById(int id);
 
         User GetByName(string name);
+        int ParentCount();
+        int DriverCount();
+        int TeacherCount();
 
 
 

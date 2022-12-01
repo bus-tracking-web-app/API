@@ -56,7 +56,7 @@ namespace First.API.Controllers
             {
                 var file = Request.Form.Files[0];
                 var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var fullPath = Path.Combine("C:\\Users\\Suzan\\Videos\\Captures\\final project\\Client\\BusTrackingAngular\\src\\assets\\images", fileName);
+                var fullPath = Path.Combine("C:\\Users\\Suzan\\Client\\BusTrackingAngular\\src\\assets\\images\\Home", fileName);
 
                 using (var stream = new FileStream(fullPath, FileMode.Create))
                 {
@@ -75,30 +75,6 @@ namespace First.API.Controllers
 
 
 
-        [Route("uploadImageHome")]
-        [HttpPost]
-        public Home UploadIMage()
-        {
-            try
-            {
-                var file = Request.Form.Files[0];
-                var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var fullPath = Path.Combine("C:\\Users\\Suzan\\Client\\BusTrackingAngular\\src\\assets\\images", fileName);
-
-                using (var stream = new FileStream(fullPath, FileMode.Create))
-                {
-                    file.CopyTo(stream);
-                }
-                Home item = new Home();
-                item.Imagepath = fileName;
-                return item;
-
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
 
 
 

@@ -86,5 +86,26 @@ namespace First.INFRA.REPOSITORY
             p.Add("uroleid", user.Roleid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var res = _dbcontext.Connection.Execute("users_package.UpdateUser", p, commandType: CommandType.StoredProcedure);
         }
+
+        public int ParentCount()
+        {
+
+            IEnumerable<int> result = _dbcontext.Connection.Query<int>("USERS_Package.ParentCount", commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
+        public int DriverCount()
+        {
+
+            IEnumerable<int> result = _dbcontext.Connection.Query<int>("users_package.DriverCount", commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
+        public int TeacherCount()
+        {
+
+            IEnumerable<int> result = _dbcontext.Connection.Query<int>("users_package.TeacherCount", commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
     }
 }

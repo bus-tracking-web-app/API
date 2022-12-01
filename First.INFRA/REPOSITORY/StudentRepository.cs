@@ -48,6 +48,13 @@ namespace First.INFRA.REPOSITORY
             return result.ToList();
         }
 
+        public int StudentCount()
+        {
+ 
+            IEnumerable<int> result = _dbContext.Connection.Query<int>("STUDENT_Package.StudentCount", commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
         public Student GetAllStudentById(int id)
         {
             var p = new DynamicParameters();

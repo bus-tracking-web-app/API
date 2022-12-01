@@ -48,5 +48,21 @@ namespace First.INFRA.SERVICE
         {
             _usersRepository.UpdateUser(user);
         }
+
+        public int ParentCount()
+        {
+            return _usersRepository.ParentCount();
+        }
+
+        public int DriverCount()
+        {
+            return _usersRepository.DriverCount();
+        }
+
+        public int TeacherCount()
+        {
+            return _usersRepository.TeacherCount();
+        }
+
     }
 }
