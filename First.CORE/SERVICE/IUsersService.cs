@@ -13,5 +13,8 @@ namespace First.CORE.SERVICE
         public void UpdateUser(User user);
         User GetUserById(int id);
         User GetByName(string name);
+        int ParentCount();
+        int DriverCount();
+        int TeacherCount();
     }
 }

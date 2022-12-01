@@ -54,6 +54,15 @@ namespace First.API.Controllers
         {
             return _studentService.GetAllStudentById(id);
         }
+
+        [HttpGet]
+        [Route("studentcount")]
+        public int StudentCount()
+        {
+            //return _studentService.StudentCount();
+            return _studentService.StudentCount();
+        }
+
         [Route("uploadImage")]
         [HttpPost]
         public Student UploadIMage()
@@ -62,7 +71,7 @@ namespace First.API.Controllers
             {
                 var file = Request.Form.Files[0];
                 var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var fullPath = Path.Combine("C:\\Users\\Suzan\\Videos\\Captures\\final project\\Client\\BusTrackingAngular\\src\\assets\\images", fileName);
+                var fullPath = Path.Combine("C:\\Users\\Suzan\\Client\\BusTrackingAngular\\src\\assets\\images\\Students", fileName);
 
                 using (var stream = new FileStream(fullPath, FileMode.Create))
                 {
@@ -79,7 +88,8 @@ namespace First.API.Controllers
             }
         }
 
-     
+
+
 
     }
 }
