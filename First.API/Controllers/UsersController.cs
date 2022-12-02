@@ -93,6 +93,7 @@ namespace First.API.Controllers
             {
                 return Ok(token);
             }
+        }
 
         [Route("ParentCount")]
         [HttpGet]
@@ -116,5 +117,5 @@ namespace First.API.Controllers
         }
 
 
+    }
 }
-
