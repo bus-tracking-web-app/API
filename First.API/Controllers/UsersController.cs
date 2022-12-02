@@ -14,10 +14,13 @@ namespace First.API.Controllers
     {
 
         private readonly IUsersService _usersService;
+        private readonly IJWTService _login;
 
-        public UsersController(IUsersService usersService)
+
+        public UsersController(IUsersService usersService, IJWTService login)
         {
             _usersService = usersService;
+            _login = login;
         }
 
         [HttpPost]
@@ -77,6 +80,20 @@ namespace First.API.Controllers
         {
             return _usersService.GetAllUsersWithRole();
         }
+        [Route("login")]
+        [HttpPost]
+        public IActionResult Auth([FromBody] User user)
+        {
+            var token = _login.Auth(user);
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                return Ok(token);
+            }
+        }
 
         [Route("ParentCount")]
         [HttpGet]
@@ -98,6 +115,7 @@ namespace First.API.Controllers
         {
             return _usersService.TeacherCount();
         }
+
 
     }
 }
