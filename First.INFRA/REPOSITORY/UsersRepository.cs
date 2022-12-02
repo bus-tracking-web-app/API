@@ -22,7 +22,7 @@ namespace First.INFRA.REPOSITORY
         {
 
             var p = new DynamicParameters();
-            p.Add("fullname", user.Username, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("fullname", user.Fullname, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("email", user.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("username", user.Username, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("password", user.Password, dbType: DbType.String, direction: ParameterDirection.Input);
