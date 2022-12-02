@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using First.CORE.COMMON;
 using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using System;
 using System.Collections.Generic;
@@ -36,9 +37,15 @@ namespace First.INFRA.REPOSITORY
             _dbContext.Connection.Execute("Bus_package.DeleteBus", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<Bu> GetAllBus()
+        public List<Bu> GetAll()
         {
-            IEnumerable<Bu> result = _dbContext.Connection.Query<Bu>("Bus_package.GetAllBus", commandType: CommandType.StoredProcedure);
+            IEnumerable<Bu> result = _dbContext.Connection.Query<Bu>("Bus_package.GetAll", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public List<AllBus> GetAllBus()
+        {
+            IEnumerable<AllBus> result = _dbContext.Connection.Query<AllBus>("Bus_package.GetAllBus", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
@@ -50,11 +57,11 @@ namespace First.INFRA.REPOSITORY
             return result.FirstOrDefault();
         }
 
-        public List<Bu> searchByBusNumber(int bnum)
+        public List<AllBus> searchByBusNumber(int bnum)
         {
             var p = new DynamicParameters();
             p.Add("bnum", bnum, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            IEnumerable<Bu> result = _dbContext.Connection.Query<Bu>("Bus_package.searchBusNumber", p, commandType: CommandType.StoredProcedure);
+            IEnumerable<AllBus> result = _dbContext.Connection.Query<AllBus>("Bus_package.searchBusNumber", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 

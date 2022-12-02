@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using First.CORE.COMMON;
 using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using System;
 using System.Collections.Generic;
@@ -36,9 +37,9 @@ namespace First.INFRA.REPOSITORY
             _dbContext.Connection.Execute("attendance_package.Deleteattendance", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<Attendance> GetAllattendance()
+        public List<AllAttendance> GetAllattendance()
         {
-            IEnumerable<Attendance> result = _dbContext.Connection.Query<Attendance>("attendance_package.GetAllattendance", commandType: CommandType.StoredProcedure);
+            IEnumerable<AllAttendance> result = _dbContext.Connection.Query<AllAttendance>("attendance_package.GetAllattendance", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
@@ -47,6 +48,20 @@ namespace First.INFRA.REPOSITORY
             var p = new DynamicParameters();
             p.Add("SId", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             IEnumerable<Attendance> result = _dbContext.Connection.Query<Attendance>("attendance_package.GetattendanceByStudentId", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
+        public List<Attendancestatus> GetStatus()
+        {
+            IEnumerable<Attendancestatus> result = _dbContext.Connection.Query<Attendancestatus>("attendance_package.GetStatus", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public Attendancestatus GetStatusById(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("SId", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Attendancestatus> result = _dbContext.Connection.Query<Attendancestatus>("attendance_package.GetStatusById", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
 

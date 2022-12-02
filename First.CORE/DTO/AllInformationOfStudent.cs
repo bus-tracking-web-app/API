@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-#nullable disable
-
-namespace First.CORE.DATA
+namespace First.CORE.DTO
 {
-    public partial class Student
+ public class AllInformationOfStudent
     {
         public decimal Id { get; set; }
         public string Fullname { get; set; }
@@ -17,9 +16,10 @@ namespace First.CORE.DATA
         public decimal? Parentid { get; set; }
         public decimal? Busid { get; set; }
 
-        public virtual Bu Bus { get; set; }
-        public virtual User Parent { get; set; }
-        public virtual Roundstatus RoundNavigation { get; set; }
+        public decimal? Busnumber { get; set; }
+        public string Parent { get; set; }
+        public string roundstatus { get; set; }
+
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using First.CORE.COMMON;
 using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using System;
 using System.Collections.Generic;
@@ -41,10 +42,17 @@ namespace First.INFRA.REPOSITORY
             IEnumerable<Student> result = _dbContext.Connection.Query<Student>("STUDENT_Package.DeleteStudent", p, commandType: CommandType.StoredProcedure);
         }
 
-        public List<Student> GetAllStudent()
+        public List<AllInformationOfStudent> GetAllStudent()
         {
-            IEnumerable<Student> result = _dbContext.Connection.Query<Student>("STUDENT_Package.GetAllStudent", commandType: CommandType.StoredProcedure);
+            IEnumerable<AllInformationOfStudent> result = _dbContext.Connection.Query<AllInformationOfStudent>("STUDENT_Package.GetAllStudent", commandType: CommandType.StoredProcedure);
             return result.ToList();
+        }
+
+        public int StudentCount()
+        {
+ 
+            IEnumerable<int> result = _dbContext.Connection.Query<int>("STUDENT_Package.StudentCount", commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
         }
 
         public Student GetAllStudentById(int id)

@@ -1,4 +1,5 @@
 ﻿using First.CORE.DATA;
+using First.CORE.DTO;
 using First.CORE.REPOSITORY;
 using First.CORE.SERVICE;
 using System;
@@ -25,7 +26,7 @@ namespace First.INFRA.SERVICE
             _attendaneRepository.Deleteattendance(id);
         }
 
-        public List<Attendance> GetAllattendance()
+        public List<AllAttendance> GetAllattendance()
         {
          return  _attendaneRepository.GetAllattendance();
         }
@@ -33,6 +34,16 @@ namespace First.INFRA.SERVICE
         public Attendance GetattendanceByStudentId(int id)
         {
             return _attendaneRepository.GetattendanceByStudentId(id);
+        }
+
+        public List<Attendancestatus> GetStatus()
+        {
+            return _attendaneRepository.GetStatus();
+        }
+
+        public Attendancestatus GetStatusById(int id)
+        {
+           return _attendaneRepository.GetStatusById(id);
         }
 
         public void Updateattendance(Attendance attendance)

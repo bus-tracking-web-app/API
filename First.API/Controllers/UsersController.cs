@@ -36,15 +36,22 @@ namespace First.API.Controllers
         }
 
         [HttpGet]
-        public List<User> GetAllCourse()
+        public List<User> GetAllUsers()
         {
-            return _usersService.GetAllCourse();
+            return _usersService.GetAllUsers();
+
         }
 
         [HttpGet("{id}")]
         public User GetUserById(int id)
         {
             return _usersService.GetUserById(id);
+        }
+        [HttpGet]
+        [Route("get/{name}")]
+        public User GetUserByName(string name)
+        {
+            return _usersService.GetByName(name);
         }
         [HttpPut]
         public void UpdateUser(User user)
@@ -87,10 +94,26 @@ namespace First.API.Controllers
                 return Ok(token);
             }
 
+        [Route("ParentCount")]
+        [HttpGet]
+        public int ParentCount()
+        {
+            return _usersService.ParentCount();
         }
 
-    }
+        [Route("dcount")]
+        [HttpGet]
+        public int DriverCount()
+        {
+            return _usersService.DriverCount();
+        }
 
+        [Route("tcount")]
+        [HttpGet]
+        public int TeacherCount()
+        {
+            return _usersService.TeacherCount();
+        }
 
 
 }

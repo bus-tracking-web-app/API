@@ -89,8 +89,8 @@ namespace First.API
             services.AddScoped<IFooterService, FooterService>();
             services.AddScoped<IAttendanceService, AttendanceService>();
 
-
-
+            services.AddScoped<IRoundService, RoundService>();
+            services.AddScoped<IRoundRepository, RoundRepository>();
             services.AddControllers();
         }
 

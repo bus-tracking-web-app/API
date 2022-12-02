@@ -60,7 +60,7 @@ namespace First.API.Controllers
             {
                 var file = Request.Form.Files[0];
                 var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var fullPath = Path.Combine("C:\\Users\\Suzan\\Videos\\Captures\\final project\\Client\\BusTrackingAngular\\src\\assets\\images", fileName);
+                var fullPath = Path.Combine("C:\\Users\\Suzan\\Client\\BusTrackingAngular\\src\\assets\\images\\about", fileName);
 
                 using (var stream = new FileStream(fullPath, FileMode.Create))
                 {
@@ -77,5 +77,7 @@ namespace First.API.Controllers
             }
         }
 
+
     }
-}
+ }
+
