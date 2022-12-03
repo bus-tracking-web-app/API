@@ -3,7 +3,6 @@ using First.CORE.REPOSITORY;
 using First.CORE.SERVICE;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -18,8 +17,11 @@ namespace First.INFRA.SERVICE
         {
             _jwtRepository = jwtRepository;
         }
+        /*
         public string Auth(User user)
         {
+
+
             var result = _jwtRepository.Auth(user);
             if (result == null)
             {
@@ -32,6 +34,7 @@ namespace First.INFRA.SERVICE
                 var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, result.Id.ToString()),
+                new Claim(ClaimTypes.Name, result.Username),
                 new Claim(ClaimTypes.Role, result.Roleid.ToString())
             };
                 var tokeOptions = new JwtSecurityToken(
@@ -43,6 +46,51 @@ namespace First.INFRA.SERVICE
                 return tokenString;
 
             }
+        */
+        public string Auth(User user)
+        {
+            //return jwtRepository.Auth(login); ---> useranme & rolename(payload)
+            var result = _jwtRepository.Auth(user);//result = useraname & rolename
+
+            if (result == null)
+                return null;
+            else
+            {
+                // Generate Token
+                // 1- Token Handler --> Class (Create Token)
+                var TokenHandler = new JwtSecurityTokenHandler();
+
+                // 2- Token Key --> The same as key in the startup
+                var TokenKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SECRET USED TO SIGN AND VERIFY JWT TOKEN"));
+
+                // 3- Token Descriptor --> Paylod (result) + prop
+                var TokenDescriptor = new SecurityTokenDescriptor
+                {
+                    // Subject
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+
+                        // new Claim(type, value)
+                        new Claim(ClaimTypes.Name, result.Username),
+                        // new Claim(type, value)
+                        new Claim(ClaimTypes.NameIdentifier, result.Id.ToString()),
+                        // new Claim(type, value)
+                        new Claim(ClaimTypes.Role, result.Roleid.ToString())
+                    }),
+
+                    // Expires
+                    Expires = DateTime.UtcNow.AddHours(1),
+
+                    // Signing Credintials
+
+                    SigningCredentials = new SigningCredentials(TokenKey, SecurityAlgorithms.HmacSha256Signature)
+                };
+
+                var token = TokenHandler.CreateToken(TokenDescriptor);
+                return TokenHandler.WriteToken(token); // string
+            }
         }
     }
+
 }
+
