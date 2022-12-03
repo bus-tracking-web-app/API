@@ -15,5 +15,6 @@ namespace First.CORE.SERVICE
         void Deleteattendance(int id);
         List<Attendancestatus> GetStatus();
         Attendancestatus GetStatusById(int id);
+        List<Attendance> GetattendanceByDate(DateTime dateofattendance);
     }
 }

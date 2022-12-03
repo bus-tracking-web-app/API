@@ -11,7 +11,7 @@ using System.Text;
 
 namespace First.INFRA.REPOSITORY
 {
-    public class AttendanceRepository: IAttendanceRepository
+    public class AttendanceRepository : IAttendanceRepository
     {
         private readonly IDbContext _dbContext;
 
@@ -68,12 +68,19 @@ namespace First.INFRA.REPOSITORY
         public void Updateattendance(Attendance attendance)
         {
             var p = new DynamicParameters();
-            p.Add("AId",attendance.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("AId", attendance.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("Stdid", attendance.Studentid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("BusiD", attendance.Busid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("Dofat", attendance.Dateofattendance, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("attState", attendance.Attendancestatus, dbType: DbType.Int32, direction: ParameterDirection.Input);
             _dbContext.Connection.Execute("attendance_package.Updateattendance", p, commandType: CommandType.StoredProcedure);
         }
+        public List<Attendance> GetattendanceByDate(DateTime dateofattendance)
+        {
+        var p = new DynamicParameters();
+        p.Add("Sdate", dateofattendance, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            IEnumerable<Attendance> result = _dbContext.Connection.Query<Attendance>("attendance_package.GetattendanceByDate", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+            }
     }
 }

@@ -50,5 +50,9 @@ namespace First.INFRA.SERVICE
         {
            _attendaneRepository.Updateattendance(attendance);
         }
+        public List<Attendance> GetattendanceByDate(DateTime dateofattendance)
+        {
+            return _attendaneRepository.GetattendanceByDate(dateofattendance);
+        }
     }
 }
