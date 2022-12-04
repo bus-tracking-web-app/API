@@ -3,6 +3,7 @@ using First.CORE.DTO;
 using First.CORE.SERVICE;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace First.API.Controllers
@@ -43,5 +44,25 @@ namespace First.API.Controllers
         {
             _attendanceService.Updateattendance(attendance);
         }
+        [HttpGet]
+        [Route("getStatus")]
+        public List<Attendancestatus> GetStatus()
+        {
+            return _attendanceService.GetStatus();
+        }
+        [HttpGet]
+        [Route("getStatusById/{id}")]
+        public Attendancestatus GetStatusById(int id)
+        {
+            return _attendanceService.GetStatusById(id);
+        }
+
+        [HttpGet]
+        [Route("getByDate/{dateofattendance}")]
+        public List<Attendance> GetattendanceByDate(DateTime dateofattendance)
+        {
+            return _attendanceService.GetattendanceByDate(dateofattendance);
+        }
+
     }
 }

@@ -36,9 +36,23 @@ namespace First.INFRA.SERVICE
             return _attendaneRepository.GetattendanceByStudentId(id);
         }
 
+        public List<Attendancestatus> GetStatus()
+        {
+            return _attendaneRepository.GetStatus();
+        }
+
+        public Attendancestatus GetStatusById(int id)
+        {
+           return _attendaneRepository.GetStatusById(id);
+        }
+
         public void Updateattendance(Attendance attendance)
         {
            _attendaneRepository.Updateattendance(attendance);
+        }
+        public List<Attendance> GetattendanceByDate(DateTime dateofattendance)
+        {
+            return _attendaneRepository.GetattendanceByDate(dateofattendance);
         }
     }
 }

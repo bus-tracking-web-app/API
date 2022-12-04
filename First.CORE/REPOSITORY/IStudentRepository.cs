@@ -13,6 +13,8 @@ namespace First.CORE.REPOSITORY
         List<Student> GetStudentByParentId(int Parent_ID);
 
         Student GetAllStudentById(int id);
+        //TotalStudent StudentCount();
+        int StudentCount();
         void CreateStudent(Student student);
         void UpdateStudent(Student student);
         void DeleteStudent(int id);

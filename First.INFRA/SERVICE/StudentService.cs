@@ -51,6 +51,18 @@ namespace First.INFRA.SERVICE
         }
 
 
+        //public TotalStudent StudentCount()
+        //{
+        //    return _studentRepository.StudentCount();
+        //}
+
+    
+
+        public int StudentCount()
+        {
+            return _studentRepository.StudentCount();
+        }
+
         public void UpdateStudent(Student student)
         {
             _studentRepository.UpdateStudent(student);

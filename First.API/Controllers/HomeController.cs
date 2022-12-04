@@ -1,6 +1,5 @@
 ﻿using First.CORE.DATA;
 using First.CORE.SERVICE;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -56,7 +55,7 @@ namespace First.API.Controllers
             {
                 var file = Request.Form.Files[0];
                 var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var fullPath = Path.Combine("C:\\Users\\Suzan\\Videos\\Captures\\final project\\Client\\BusTrackingAngular\\src\\assets\\images", fileName);
+                var fullPath = Path.Combine("C:\\Users\\Suzan\\Client\\BusTrackingAngular\\src\\assets\\images\\Home", fileName);
 
                 using (var stream = new FileStream(fullPath, FileMode.Create))
                 {

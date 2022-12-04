@@ -30,7 +30,9 @@ namespace First.API.Controllers
 
         [HttpGet]
         [Route("GetById/{id}")]
-        Roundstatus GetRoundByID(int id)
+
+        public Roundstatus GetRoundByID(int id)
+
         {
             return _roundService.GetRoundByID(id);
         }
