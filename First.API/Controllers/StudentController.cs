@@ -47,6 +47,22 @@ namespace First.API.Controllers
         {
             return _studentService.GetAllStudent();
         }
+        [HttpGet]
+        [Route("GetStudentByParentId/{Parent_ID}")]
+        public List<Student> GetStudentByParentId(int Parent_ID)
+        {
+            return _studentService.GetStudentByParentId(Parent_ID);
+        }
+
+        [HttpGet]
+        [Route("GetStudentByBusId/{Bus_ID}")]
+        public List<Student> GetStudentByBusId(int Bus_ID)
+        {
+            return _studentService.GetStudentByBusId(Bus_ID);
+        }
+
+
+
 
         [HttpGet]
         [Route("GetById/{id}")]
@@ -78,8 +94,29 @@ namespace First.API.Controllers
                 return null;
             }
         }
+        [Route("UpdateStudentBusStatus/{lathome}")]
+        [HttpGet]
+        public void UpdateStudentBusStatus(string lathome)
+        {
+            _studentService.UpdateStudentBusStatus(lathome);
+        }
+        [Route("UpdateAllStudentStatus")]
+        [HttpGet]
 
-     
+        public void UpdateAllStudentStatus()
+        {
+            _studentService.UpdateAllStudentStatus();
+        }
+
+        [Route("getParentStudents/{id}")]
+        [HttpGet]
+
+        public List<ParentStudentDTO> getParentStudents(int id)
+        {
+            return _studentService.getParentStudents(id);
+        }
+
+
 
     }
 }
