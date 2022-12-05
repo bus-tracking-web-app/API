@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 
 namespace First.INFRA.REPOSITORY
 {
@@ -75,12 +74,12 @@ namespace First.INFRA.REPOSITORY
             p.Add("attState", attendance.Attendancestatus, dbType: DbType.Int32, direction: ParameterDirection.Input);
             _dbContext.Connection.Execute("attendance_package.Updateattendance", p, commandType: CommandType.StoredProcedure);
         }
-        public List<Attendance> GetattendanceByDate(DateTime dateofattendance)
+        public List<AllAttendance> GetattendanceByDate(DateTime dateofattendance)
         {
-        var p = new DynamicParameters();
-        p.Add("Sdate", dateofattendance, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            IEnumerable<Attendance> result = _dbContext.Connection.Query<Attendance>("attendance_package.GetattendanceByDate", p, commandType: CommandType.StoredProcedure);
+            var p = new DynamicParameters();
+            p.Add("Sdate", dateofattendance, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            var result = _dbContext.Connection.Query<AllAttendance>("attendance_package.GetattendanceByDate", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
-            }
+        }
     }
 }

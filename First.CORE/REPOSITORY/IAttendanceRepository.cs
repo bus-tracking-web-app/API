@@ -2,7 +2,6 @@
 using First.CORE.DTO;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace First.CORE.REPOSITORY
 {
@@ -16,6 +15,6 @@ namespace First.CORE.REPOSITORY
         List<Attendancestatus> GetStatus();
         Attendancestatus GetStatusById(int id);
 
-        List <Attendance> GetattendanceByDate(DateTime dateofattendance);
+        List<AllAttendance> GetattendanceByDate(DateTime dateofattendance);
     }
 }
