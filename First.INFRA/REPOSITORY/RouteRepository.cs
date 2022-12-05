@@ -3,11 +3,14 @@ using First.CORE.COMMON;
 using First.CORE.DATA;
 using First.CORE.DTO;
 using First.CORE.REPOSITORY;
+using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using Route = First.CORE.DATA.Route;
 
 namespace First.INFRA.REPOSITORY
 {
@@ -21,8 +24,8 @@ namespace First.INFRA.REPOSITORY
         public void CreateRoute(Route route)
         {
             var p = new DynamicParameters();
-            p.Add("pXCURRENT", route.Xcurrent, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pYCURRENT", route.Ycurrent, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("pXCURRENT", "null", dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("pYCURRENT", "null", dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("pXSTART", route.Xstart, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("pYSTART", route.Ystart, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("pXEND", route.Xend, dbType: DbType.Int32, direction: ParameterDirection.Input);
@@ -77,5 +80,32 @@ namespace First.INFRA.REPOSITORY
 
 
         }
+        public Route GetBusRouteByDriverId(int driverId)
+        {
+            var p = new DynamicParameters();
+            p.Add("driverId", driverId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Route> result = _dbContext.Connection.Query<Route>("getbusRouteByuserId", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+
+
+        }
+        public void SetBusLocation(SetBusLocationDTO setBusLocation)
+        {
+            var p = new DynamicParameters();
+            p.Add("latx", setBusLocation.Xcurrent, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("longy", setBusLocation.Ycurrent, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("driverId", setBusLocation.DriverId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            _dbContext.Connection.Execute("SETCURRENTBUSLOCATION", p, commandType: CommandType.StoredProcedure);
+
+        }
+         public void SetCureenBusLocationAftreEnf(int driverId)
+        {
+            var p = new DynamicParameters();
+            p.Add("driverId", driverId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            _dbContext.Connection.Execute("setCurrentBusLocationAfterEnd", p, commandType: CommandType.StoredProcedure);
+
+
+        }
+
     }
 }

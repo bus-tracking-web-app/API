@@ -9,11 +9,17 @@ namespace First.CORE.REPOSITORY
     public interface IRouteRepository
     {
         List<Route> GetAllRoute();
+
         List<RouteDTO> GetAllRouteDTO();
 
         Route GetRouteById(int id);
         void CreateRoute(Route route);
         void UpdateRoute(Route route);
         void DeleteRoute(int id);
+        Route GetBusRouteByDriverId(int driverId);
+        void SetBusLocation(SetBusLocationDTO setBusLocation);
+        void SetCureenBusLocationAftreEnf(int driverId);
+
+
     }
 }
