@@ -80,6 +80,7 @@ namespace First.INFRA.SERVICE
         public List<ParentStudentDTO> getParentStudents(int id)
         {
             return _studentRepository.getParentStudents(id);
+
         }
     }
 }
