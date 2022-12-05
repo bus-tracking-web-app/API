@@ -38,6 +38,19 @@ namespace First.INFRA.SERVICE
             return _studentRepository.GetAllStudentById(id);
         }
 
+        public List<Student> GetStudentByBusId(int Bus_ID)
+        {
+            return _studentRepository.GetStudentByBusId(Bus_ID);
+
+        }
+
+        public List<Student> GetStudentByParentId(int Parent_ID)
+        {
+            return _studentRepository.GetStudentByParentId(Parent_ID);
+                
+        }
+
+
         //public TotalStudent StudentCount()
         //{
         //    return _studentRepository.StudentCount();
@@ -53,6 +66,21 @@ namespace First.INFRA.SERVICE
         public void UpdateStudent(Student student)
         {
             _studentRepository.UpdateStudent(student);
+        }
+        public void UpdateStudentBusStatus(string lathome)
+        {
+            _studentRepository.UpdateStudentBusStatus(lathome);
+
+        }
+        public void UpdateAllStudentStatus()
+        {
+            _studentRepository.UpdateAllStudentStatus();
+        }
+
+        public List<ParentStudentDTO> getParentStudents(int id)
+        {
+            return _studentRepository.getParentStudents(id);
+
         }
     }
 }

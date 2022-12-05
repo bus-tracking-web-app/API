@@ -44,5 +44,19 @@ namespace First.INFRA.SERVICE
         {
             _routeRepository.UpdateRoute(route);
         }
+        public Route GetBusRouteByDriverId(int driverId)
+        {
+            return _routeRepository.GetBusRouteByDriverId( driverId);
+        }
+
+        public void SetBusLocation(SetBusLocationDTO setBusLocation)
+        {
+            _routeRepository.SetBusLocation(setBusLocation);
+        }
+
+        public void SetCureenBusLocationAftreEnf(int driverId)
+        {
+            _routeRepository.SetCureenBusLocationAftreEnf(driverId);
+        }
     }
 }
