@@ -53,5 +53,10 @@ namespace First.INFRA.SERVICE
         {
             return _attendaneRepository.GetattendanceByDate(dateofattendance);
         }
+
+        public List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday)
+        {
+            return _attendaneRepository.GetParentEmail(dateofday);
+        }
     }
 }
