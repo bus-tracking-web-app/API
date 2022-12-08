@@ -49,6 +49,13 @@ namespace First.INFRA.REPOSITORY
             return result.ToList();
         }
 
+        public List<BusAndStudentCountcs> GetBusAndStudentCount()
+        {
+            IEnumerable<BusAndStudentCountcs> result = _dbContext.Connection.Query<BusAndStudentCountcs>("Bus_package.BusAndStudentCount", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+
+        }
+
         public Bu GetBusById(int id)
         {
             var p = new DynamicParameters();
