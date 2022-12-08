@@ -55,5 +55,11 @@ namespace First.API.Controllers
         {
             return _busService.searchByBusNumber(bnum);
         }
+        [HttpGet]
+        [Route("busAndStudentCount")]
+        public List<BusAndStudentCountcs> GetBusAndStudentCount()
+        {
+            return _busService.GetBusAndStudentCount();
+        }
     }
 }
