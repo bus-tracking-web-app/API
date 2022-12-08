@@ -47,11 +47,33 @@ namespace First.API.Controllers
         {
             return _routeService.GetRouteById(id);
         }
+
         [HttpPut]
         [Route("UpdateRoute")]
         public void UpdateRoute(Route route)
         {
             _routeService.UpdateRoute(route);
         }
+        [HttpGet]
+        [Route("GetBusRouteByDriverId/{driverId}")]
+        public Route GetBusRouteByDriverId(int driverId)
+        {
+            return _routeService.GetBusRouteByDriverId(driverId);
+        }
+        [HttpPost]
+        [Route("SetBusLocation")]
+        public void SetBusLocation(SetBusLocationDTO setBusLocation)
+        {
+            _routeService.SetBusLocation(setBusLocation);
+        }
+        [HttpGet]
+        [Route("SetCureenBusLocationAftreEnf/{driverId}")]
+        public void SetCureenBusLocationAftreEnf(int driverId)
+        {
+            _routeService.SetCureenBusLocationAftreEnf(driverId);
+        }
+
+
+
     }
 }

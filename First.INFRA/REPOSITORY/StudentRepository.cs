@@ -31,7 +31,7 @@ namespace First.INFRA.REPOSITORY
             p.Add("ROUND", student.Round, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("PARENTID", student.Parentid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("BUSID", student.Busid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-           
+
             _dbContext.Connection.Execute("STUDENT_Package.CreateStudent", p, commandType: CommandType.StoredProcedure);
         }
 
@@ -48,12 +48,36 @@ namespace First.INFRA.REPOSITORY
             return result.ToList();
         }
 
+        public int StudentCount()
+        {
+ 
+            IEnumerable<int> result = _dbContext.Connection.Query<int>("STUDENT_Package.StudentCount", commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
         public Student GetAllStudentById(int id)
         {
             var p = new DynamicParameters();
             p.Add("STUDENT_id", id, DbType.Int32, direction: ParameterDirection.Input);
             IEnumerable<Student> result = _dbContext.Connection.Query<Student>("STUDENT_Package.GetStudentById", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
+        }
+
+        public List<Student> GetStudentByBusId(int Bus_ID)
+        {
+            var p = new DynamicParameters();
+            p.Add("driverId", Bus_ID, DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Student> result = _dbContext.Connection.Query<Student>("busStudents", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+
+        }
+
+        public List<Student> GetStudentByParentId(int Parent_ID)
+        {
+            var p = new DynamicParameters();
+            p.Add("Parent_ID", Parent_ID, DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Student> result = _dbContext.Connection.Query<Student>("STUDENT_Package.GetStudentByParentId", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
 
         public void UpdateStudent(Student student)
@@ -70,5 +94,30 @@ namespace First.INFRA.REPOSITORY
             p.Add("BUS_ID", student.Busid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             _dbContext.Connection.Execute("STUDENT_Package.UpdateStudent", p, commandType: CommandType.StoredProcedure);
         }
+
+        public void UpdateStudentBusStatus(string lathome)
+        {
+            var p = new DynamicParameters();
+            p.Add("lathome", lathome, dbType: DbType.String, direction: ParameterDirection.Input);
+            _dbContext.Connection.Execute("UPDATESTUDENTBUSSTATUS", p, commandType: CommandType.StoredProcedure);
+
+        }
+
+        public void UpdateAllStudentStatus()
+        {
+            _dbContext.Connection.Execute("UpdateAllStudentStatus", commandType: CommandType.StoredProcedure);
+
+        }
+
+        public List<ParentStudentDTO> getParentStudents(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("pid", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<ParentStudentDTO> result = _dbContext.Connection.Query<ParentStudentDTO>("getParentStudents", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+
+
     }
 }

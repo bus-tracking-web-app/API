@@ -22,7 +22,7 @@ namespace First.INFRA.REPOSITORY
         {
 
             var p = new DynamicParameters();
-            p.Add("fullname", user.Username, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("fullname", user.Fullname, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("email", user.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("username", user.Username, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("password", user.Password, dbType: DbType.String, direction: ParameterDirection.Input);
@@ -85,6 +85,27 @@ namespace First.INFRA.REPOSITORY
             p.Add("uimagepath", user.Imagepath, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("uroleid", user.Roleid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var res = _dbcontext.Connection.Execute("users_package.UpdateUser", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public int ParentCount()
+        {
+
+            IEnumerable<int> result = _dbcontext.Connection.Query<int>("USERS_Package.ParentCount", commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
+        public int DriverCount()
+        {
+
+            IEnumerable<int> result = _dbcontext.Connection.Query<int>("users_package.DriverCount", commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
+        public int TeacherCount()
+        {
+
+            IEnumerable<int> result = _dbcontext.Connection.Query<int>("users_package.TeacherCount", commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
         }
     }
 }

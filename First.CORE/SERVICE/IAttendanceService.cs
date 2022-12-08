@@ -2,7 +2,6 @@
 using First.CORE.DTO;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace First.CORE.SERVICE
 {
@@ -15,5 +14,7 @@ namespace First.CORE.SERVICE
         void Deleteattendance(int id);
         List<Attendancestatus> GetStatus();
         Attendancestatus GetStatusById(int id);
+        List<AllAttendance> GetattendanceByDate(DateTime dateofattendance);
+        List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday);
     }
 }
