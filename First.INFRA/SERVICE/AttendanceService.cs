@@ -58,5 +58,10 @@ namespace First.INFRA.SERVICE
         {
             return _attendaneRepository.GetParentEmail(dateofday);
         }
+
+        public List<AllAttendance> Search(SearchAtt searchAtt)
+        {
+            return _attendaneRepository.Search( searchAtt);
+        }
     }
 }

@@ -102,11 +102,22 @@ namespace First.API.Controllers
                 clinte.Disconnect(true);
             }
 
-            
 
         }
-
+        [HttpPost]
+        [Route("Search")]
+        public List<AllAttendance> Search(SearchAtt searchAtt)
+        {
+            return _attendanceService.Search(searchAtt);
+        }
     }
-}
+
+            
+
+
+ }
+
+    
+
 
 
