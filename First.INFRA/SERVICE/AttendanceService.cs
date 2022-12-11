@@ -30,7 +30,7 @@ namespace First.INFRA.SERVICE
             return _attendaneRepository.GetAllattendance();
         }
 
-        public Attendance GetattendanceByStudentId(int id)
+         public List<AllAttendance> GetattendanceByStudentId(int id)
         {
             return _attendaneRepository.GetattendanceByStudentId(id);
         }

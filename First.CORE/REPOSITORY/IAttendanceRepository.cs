@@ -8,7 +8,7 @@ namespace First.CORE.REPOSITORY
     public interface IAttendanceRepository
     {
         List<AllAttendance> GetAllattendance();
-        Attendance GetattendanceByStudentId(int id);
+        List<AllAttendance> GetattendanceByStudentId(int id);
         void Createattendance(Attendance attendance);
         void Updateattendance(Attendance attendance);
         void Deleteattendance(int id);

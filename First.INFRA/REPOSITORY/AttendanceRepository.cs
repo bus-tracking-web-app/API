@@ -42,12 +42,12 @@ namespace First.INFRA.REPOSITORY
             return result.ToList();
         }
 
-        public Attendance GetattendanceByStudentId(int id)
+        public List<AllAttendance> GetattendanceByStudentId(int id)
         {
             var p = new DynamicParameters();
             p.Add("SId", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            IEnumerable<Attendance> result = _dbContext.Connection.Query<Attendance>("attendance_package.GetattendanceByStudentId", p, commandType: CommandType.StoredProcedure);
-            return result.FirstOrDefault();
+            IEnumerable<AllAttendance> result = _dbContext.Connection.Query<AllAttendance>("attendance_package.GetattendanceByStudentId", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
 
         public List<Attendancestatus> GetStatus()

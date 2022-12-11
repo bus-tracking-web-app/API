@@ -2,9 +2,9 @@
 using First.CORE.DTO;
 using First.CORE.SERVICE;
 using MailKit.Net.Smtp;
-using MailKit.Security;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
+using MimeKit.Utils;
 using System;
 using System.Collections.Generic;
 
@@ -37,10 +37,11 @@ namespace First.API.Controllers
         }
         [HttpGet]
         [Route("GetByStudentId/{id}")]
-        public Attendance GetattendanceByStudentId(int id)
+         public List<AllAttendance> GetattendanceByStudentId(int id)
         {
             return _attendanceService.GetattendanceByStudentId(id);
         }
+
         [HttpPut]
         public void Updateattendance(Attendance attendance)
         {
@@ -80,17 +81,18 @@ namespace First.API.Controllers
         [Route("SendEmail/{ParentEmail}")]
         public void SendEmail(String ParentEmail)
         {
-
+            var builder = new BodyBuilder();
 
             MimeMessage message = new MimeMessage();
             MailboxAddress from = new MailboxAddress("Bus Tracking", "s.moe12@yahoo.com");
             message.From.Add(from);
             MailboxAddress to = new MailboxAddress("User", ParentEmail);
             message.To.Add(to);
-            message.Subject = "Your son Near of you";
+            message.Subject = "Bus Tracking";
             BodyBuilder bodyBuilder = new BodyBuilder();
-            bodyBuilder.HtmlBody =
-            "<p style=\"color:#7fb685\">quastion approve </p>" + "The Date"  + "<p> Thank you for trusting us </p>" + "<p>Your son </p>";
+            bodyBuilder.HtmlBody = string.Format(
+            "<h4 style=\"text-align: center;color:#7fb685\" >Thank you for trusting us !!</h4>" + "" +
+            "<p>Your son Near of you </p>");
             message.Body = bodyBuilder.ToMessageBody();
             using (var clinte = new SmtpClient())
             {
@@ -110,11 +112,11 @@ namespace First.API.Controllers
         }
     }
 
+            
 
+        }
 
-
-                
-         
+    }
 }
 
 
