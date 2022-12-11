@@ -56,6 +56,7 @@ namespace First.API.Controllers
         [HttpPut]
         public void UpdateUser(User user)
         {
+
             _usersService.UpdateUser(user);
         }
         [Route("uploadImage")]
@@ -64,7 +65,7 @@ namespace First.API.Controllers
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullPath = Path.Combine("D:\\AngularTutorial\\Client1\\Client\\BusTrackingAngular\\src\\assets\\images\\users", fileName);
+            var fullPath = Path.Combine("D:\\Bus API repo\\Client\\Client\\BusTrackingAngular\\src\\assets\\images\\users", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(stream);
