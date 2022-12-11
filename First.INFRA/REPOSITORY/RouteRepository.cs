@@ -105,6 +105,7 @@ namespace First.INFRA.REPOSITORY
             _dbContext.Connection.Execute("setCurrentBusLocationAfterEnd", p, commandType: CommandType.StoredProcedure);
 
 
+
         }
 
     }
