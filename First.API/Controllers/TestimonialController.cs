@@ -86,6 +86,12 @@ namespace First.API.Controllers
             item.Imagepath = fileName;
             return item;
         }
+        [HttpGet]
+        [Route("getApprovedTestimonial")]
+        public List<Testimonial> getApprovedTestimonial()
+        {
+            return _testimonialService.getApprovedTestimonial();
+        }
 
 
     }

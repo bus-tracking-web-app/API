@@ -41,6 +41,7 @@ namespace First.INFRA.SERVICE
             return _testimonialRepository.GETALLtestimonialStatus();
         }
 
+
         public Testimonial GETtestimonialBYID(int id)
         {
             return _testimonialRepository.GETtestimonialBYID(id);
@@ -55,5 +56,10 @@ namespace First.INFRA.SERVICE
         {
             _testimonialRepository.UPDATETESTIMONIAL(testimonial);
         }
+        public List<Testimonial> getApprovedTestimonial()
+        {
+            return _testimonialRepository.getApprovedTestimonial();
+        }
+
     }
 }

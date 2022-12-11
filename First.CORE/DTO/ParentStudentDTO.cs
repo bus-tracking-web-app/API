@@ -18,6 +18,8 @@ namespace First.CORE.DTO
         public string Ystart { get; set; }
         public string Xend { get; set; }
         public string Yend { get; set; }
+        public string Imgpath { get; set; }
+
 
     }
 }

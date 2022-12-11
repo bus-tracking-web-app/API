@@ -54,6 +54,7 @@ namespace First.INFRA.REPOSITORY
             return result.ToList();
         }
 
+
         public Testimonial GETtestimonialBYID(int id)
         {
             var p = new DynamicParameters();
@@ -77,5 +78,12 @@ namespace First.INFRA.REPOSITORY
             p.Add("TSTATUSID", testimonial.Statusid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             _dbContext.Connection.Execute("testimonial_package.UPDATETESTIMONIAL", p, commandType: CommandType.StoredProcedure);
         }
+
+        public List<Testimonial> getApprovedTestimonial()
+        {
+            IEnumerable<Testimonial> result = _dbContext.Connection.Query<Testimonial>("getApprovedTestimonial", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
     }
 }
