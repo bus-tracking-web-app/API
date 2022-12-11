@@ -84,7 +84,6 @@ namespace First.API.Controllers
         {
             var builder = new BodyBuilder();
 
-
             MimeMessage message = new MimeMessage();
             MailboxAddress from = new MailboxAddress("Bus Tracking", "s.moe12@yahoo.com");
             message.From.Add(from);
