@@ -41,6 +41,7 @@ namespace First.API.Controllers
         {
             return _attendanceService.GetattendanceByStudentId(id);
         }
+
         [HttpPut]
         public void Updateattendance(Attendance attendance)
         {
