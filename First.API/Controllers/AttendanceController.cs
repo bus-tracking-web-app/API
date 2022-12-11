@@ -37,7 +37,7 @@ namespace First.API.Controllers
         }
         [HttpGet]
         [Route("GetByStudentId/{id}")]
-        public Attendance GetattendanceByStudentId(int id)
+         public List<AllAttendance> GetattendanceByStudentId(int id)
         {
             return _attendanceService.GetattendanceByStudentId(id);
         }
