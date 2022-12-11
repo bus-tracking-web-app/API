@@ -18,5 +18,7 @@ namespace First.CORE.REPOSITORY
         void CREATEtestimonial(Testimonial testimonial);
         void UPDATETESTIMONIAL(Testimonial testimonial);
         void Deletetestimonial(int id);
+        List<Testimonial> getApprovedTestimonial();
+
     }
 }
