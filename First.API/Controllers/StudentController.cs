@@ -61,7 +61,7 @@ namespace First.API.Controllers
             return _studentService.GetStudentByBusId(Bus_ID);
         }
 
-
+        
 
 
         [HttpGet]
