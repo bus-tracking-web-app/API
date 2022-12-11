@@ -4,11 +4,10 @@ using First.CORE.REPOSITORY;
 using First.CORE.SERVICE;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace First.INFRA.SERVICE
 {
-    public class AttendanceService: IAttendanceService
+    public class AttendanceService : IAttendanceService
     {
         private readonly IAttendanceRepository _attendaneRepository;
         public AttendanceService(IAttendanceRepository attendaneRepository)
@@ -18,7 +17,7 @@ namespace First.INFRA.SERVICE
 
         public void Createattendance(Attendance attendance)
         {
-          _attendaneRepository.Createattendance(attendance);
+            _attendaneRepository.Createattendance(attendance);
         }
 
         public void Deleteattendance(int id)
@@ -28,7 +27,7 @@ namespace First.INFRA.SERVICE
 
         public List<AllAttendance> GetAllattendance()
         {
-         return  _attendaneRepository.GetAllattendance();
+            return _attendaneRepository.GetAllattendance();
         }
 
         public Attendance GetattendanceByStudentId(int id)
@@ -43,16 +42,21 @@ namespace First.INFRA.SERVICE
 
         public Attendancestatus GetStatusById(int id)
         {
-           return _attendaneRepository.GetStatusById(id);
+            return _attendaneRepository.GetStatusById(id);
         }
 
         public void Updateattendance(Attendance attendance)
         {
-           _attendaneRepository.Updateattendance(attendance);
+            _attendaneRepository.Updateattendance(attendance);
         }
-        public List<Attendance> GetattendanceByDate(DateTime dateofattendance)
+        public List<AllAttendance> GetattendanceByDate(DateTime dateofattendance)
         {
             return _attendaneRepository.GetattendanceByDate(dateofattendance);
+        }
+
+        public List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday)
+        {
+            return _attendaneRepository.GetParentEmail(dateofday);
         }
     }
 }

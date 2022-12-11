@@ -36,6 +36,11 @@ namespace First.INFRA.SERVICE
             return _busRepository.GetAllBus();
         }
 
+        public List<BusAndStudentCountcs> GetBusAndStudentCount()
+        {
+           return _busRepository.GetBusAndStudentCount();
+        }
+
         public Bu GetBusById(int id)
         {
            return _busRepository.GetBusById(id);
