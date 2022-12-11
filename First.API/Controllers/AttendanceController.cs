@@ -102,6 +102,12 @@ namespace First.API.Controllers
 
 
         }
+        [HttpPost]
+        [Route("Search")]
+        public List<AllAttendance> Search(SearchAtt searchAtt)
+        {
+            return _attendanceService.Search(searchAtt);
+        }
     }
 
 

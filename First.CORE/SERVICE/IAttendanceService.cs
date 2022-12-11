@@ -16,5 +16,6 @@ namespace First.CORE.SERVICE
         Attendancestatus GetStatusById(int id);
         List<AllAttendance> GetattendanceByDate(DateTime dateofattendance);
         List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday);
+        List<AllAttendance> Search(SearchAtt searchAtt);
     }
 }

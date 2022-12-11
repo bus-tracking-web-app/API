@@ -89,5 +89,14 @@ namespace First.INFRA.REPOSITORY
             var result = _dbContext.Connection.Query<GetParentEmail_Attendance>("attendance_package.GetattendanceByDateWithParent", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+
+        public List<AllAttendance> Search(SearchAtt searchAtt)
+        {
+            var p = new DynamicParameters();
+            p.Add("Sname", searchAtt.Sname, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Sdate", searchAtt.Sdate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            var result = _dbContext.Connection.Query<AllAttendance>("attendance_package.attSearch", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }
