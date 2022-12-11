@@ -2,7 +2,6 @@
 using First.CORE.DTO;
 using First.CORE.SERVICE;
 using MailKit.Net.Smtp;
-using MailKit.Security;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using System;
@@ -87,10 +86,10 @@ namespace First.API.Controllers
             message.From.Add(from);
             MailboxAddress to = new MailboxAddress("User", ParentEmail);
             message.To.Add(to);
-            message.Subject = "Your son Near of you";
+            message.Subject = "your son has arric";
             BodyBuilder bodyBuilder = new BodyBuilder();
             bodyBuilder.HtmlBody =
-            "<p style=\"color:#7fb685\">quastion approve </p>" + "The Date"  + "<p> Thank you for trusting us </p>" + "<p>Your son </p>";
+            "<p style=\"color:#7fb685\">quastion approve </p>" + "We are Happy to inform you that your son has arrived home safely " + "<p> Thank you for trusting us </p>";
             message.Body = bodyBuilder.ToMessageBody();
             using (var clinte = new SmtpClient())
             {
@@ -107,8 +106,8 @@ namespace First.API.Controllers
 
 
 
-                
-         
+
+
 }
 
 
