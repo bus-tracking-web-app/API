@@ -24,12 +24,12 @@ namespace First.INFRA.REPOSITORY
         public void CreateRoute(Route route)
         {
             var p = new DynamicParameters();
-            p.Add("pXCURRENT", "null", dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pYCURRENT", "null", dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pXSTART", route.Xstart, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pYSTART", route.Ystart, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pXEND", route.Xend, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pYEND", route.Yend, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("pXCURRENT", "null", dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pYCURRENT", "null", dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pXSTART", route.Xstart, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pYSTART", route.Ystart, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pXEND", route.Xend, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pYEND", route.Yend, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("pBUSID", route.Busid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             _dbContext.Connection.Execute("route_package.CREATEroute", p, commandType: CommandType.StoredProcedure);
 
