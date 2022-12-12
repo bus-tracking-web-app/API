@@ -93,6 +93,12 @@ namespace First.API.Controllers
             return _testimonialService.getApprovedTestimonial();
         }
 
+        [HttpGet]
+        [Route("getTestimonialByUserName/{username}")]
+        public List<Testimonial> getTestimonialByName(string username)
+        {
+            return _testimonialService.getTestimonialByName(username);
+        }
 
     }
 }
