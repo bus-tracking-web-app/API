@@ -17,5 +17,6 @@ namespace First.CORE.REPOSITORY
 
         List<AllAttendance> GetattendanceByDate(DateTime dateofattendance);
         List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday);
+        List<AllAttendance> Search(SearchAtt searchAtt);
     }
 }
