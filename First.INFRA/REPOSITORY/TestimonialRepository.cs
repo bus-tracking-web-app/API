@@ -85,5 +85,13 @@ namespace First.INFRA.REPOSITORY
             return result.ToList();
         }
 
+        public List<Testimonial> getTestimonialByName(string username)
+        {
+
+            var p = new DynamicParameters();
+            p.Add("username", username, dbType: DbType.String, direction: ParameterDirection.Input);
+            IEnumerable<Testimonial> result = _dbContext.Connection.Query<Testimonial>("testimonial_package.getTestimonialByName", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }

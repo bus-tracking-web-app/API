@@ -18,6 +18,7 @@ namespace First.CORE.SERVICE
         void UPDATETESTIMONIAL(Testimonial testimonial);
         void Deletetestimonial(int id);
         List<Testimonial> getApprovedTestimonial();
+        List<Testimonial> getTestimonialByName(String username);
 
     }
 }

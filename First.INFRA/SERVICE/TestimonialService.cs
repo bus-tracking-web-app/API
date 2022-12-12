@@ -61,5 +61,9 @@ namespace First.INFRA.SERVICE
             return _testimonialRepository.getApprovedTestimonial();
         }
 
+        public List<Testimonial> getTestimonialByName(string username)
+        {
+            return _testimonialRepository.getTestimonialByName(username);
+        }
     }
 }

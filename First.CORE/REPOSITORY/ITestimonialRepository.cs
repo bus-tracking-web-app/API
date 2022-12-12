@@ -10,7 +10,7 @@ namespace First.CORE.REPOSITORY
     {
         List<Testimonial> GETALLtestimonial();
         List<Testimonialstatus> GETALLtestimonialStatus();
-
+        
         List<TestimonialDTO> GETALLtestimonialDTO();
         Testimonialstatus GETtestimonialStatusBYID(int id);
 
@@ -19,6 +19,6 @@ namespace First.CORE.REPOSITORY
         void UPDATETESTIMONIAL(Testimonial testimonial);
         void Deletetestimonial(int id);
         List<Testimonial> getApprovedTestimonial();
-
+        List<Testimonial> getTestimonialByName(String username);
     }
 }
