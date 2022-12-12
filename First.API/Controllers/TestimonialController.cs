@@ -1,7 +1,6 @@
 ﻿using First.CORE.DATA;
 using First.CORE.DTO;
 using First.CORE.SERVICE;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -95,9 +94,12 @@ namespace First.API.Controllers
 
         [HttpGet]
         [Route("getTestimonialByUserName/{username}")]
-        public List<Testimonial> getTestimonialByName(string username)
+        public bool getTestimonialByName(string username)
         {
-            return _testimonialService.getTestimonialByName(username);
+            var res = _testimonialService.getTestimonialByName(username).Count;
+            if (res >= 1) return true;
+
+            else return false;
         }
 
     }
