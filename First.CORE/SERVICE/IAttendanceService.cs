@@ -14,8 +14,8 @@ namespace First.CORE.SERVICE
         void Deleteattendance(int id);
         List<Attendancestatus> GetStatus();
         Attendancestatus GetStatusById(int id);
-        List<AllAttendance> GetattendanceByDate(DateTime dateofattendance);
-        List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday);
+        List<AllAttendance> GetattendanceByDate(DateTime dateofattendance, int tid);
+        List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday, int tid);
         List<AllAttendance> Search(SearchAtt searchAtt);
     }
 }

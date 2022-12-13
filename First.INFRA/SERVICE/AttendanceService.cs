@@ -30,7 +30,7 @@ namespace First.INFRA.SERVICE
             return _attendaneRepository.GetAllattendance();
         }
 
-         public List<AllAttendance> GetattendanceByStudentId(int id)
+        public List<AllAttendance> GetattendanceByStudentId(int id)
         {
             return _attendaneRepository.GetattendanceByStudentId(id);
         }
@@ -49,19 +49,19 @@ namespace First.INFRA.SERVICE
         {
             _attendaneRepository.Updateattendance(attendance);
         }
-        public List<AllAttendance> GetattendanceByDate(DateTime dateofattendance)
+        public List<AllAttendance> GetattendanceByDate(DateTime dateofattendance, int tid)
         {
-            return _attendaneRepository.GetattendanceByDate(dateofattendance);
+            return _attendaneRepository.GetattendanceByDate(dateofattendance, tid);
         }
 
-        public List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday)
+        public List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday, int tid)
         {
-            return _attendaneRepository.GetParentEmail(dateofday);
+            return _attendaneRepository.GetParentEmail(dateofday, tid);
         }
 
         public List<AllAttendance> Search(SearchAtt searchAtt)
         {
-            return _attendaneRepository.Search( searchAtt);
+            return _attendaneRepository.Search(searchAtt);
         }
     }
 }
