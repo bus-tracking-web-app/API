@@ -4,7 +4,6 @@ using First.CORE.SERVICE;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
-using MimeKit.Utils;
 using System;
 using System.Collections.Generic;
 
@@ -37,7 +36,7 @@ namespace First.API.Controllers
         }
         [HttpGet]
         [Route("GetByStudentId/{id}")]
-         public List<AllAttendance> GetattendanceByStudentId(int id)
+        public List<AllAttendance> GetattendanceByStudentId(int id)
         {
             return _attendanceService.GetattendanceByStudentId(id);
         }
@@ -61,18 +60,18 @@ namespace First.API.Controllers
         }
 
         [HttpGet]
-        [Route("getByDate/{dateofattendance}")]
-        public List<AllAttendance> GetattendanceByDate(DateTime dateofattendance)
+        [Route("getByDate/{dateofattendance}/{tid}")]
+        public List<AllAttendance> GetattendanceByDate(DateTime dateofattendance, int tid)
         {
-            return _attendanceService.GetattendanceByDate(dateofattendance);
+            return _attendanceService.GetattendanceByDate(dateofattendance, tid);
         }
 
 
         [HttpGet]
-        [Route("StudentInfo/{dateofday}")]
-        public List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday)
+        [Route("StudentInfo/{dateofday}/{tid}")]
+        public List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday, int tid)
         {
-            return _attendanceService.GetParentEmail(dateofday);
+            return _attendanceService.GetParentEmail(dateofday, tid);
         }
 
 
@@ -112,12 +111,12 @@ namespace First.API.Controllers
         }
     }
 
-            
 
 
- }
 
-    
+}
+
+
 
 
 

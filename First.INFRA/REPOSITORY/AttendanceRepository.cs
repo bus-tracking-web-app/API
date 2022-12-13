@@ -74,18 +74,21 @@ namespace First.INFRA.REPOSITORY
             p.Add("attState", attendance.Attendancestatus, dbType: DbType.Int32, direction: ParameterDirection.Input);
             _dbContext.Connection.Execute("attendance_package.Updateattendance", p, commandType: CommandType.StoredProcedure);
         }
-        public List<AllAttendance> GetattendanceByDate(DateTime dateofattendance)
+        public List<AllAttendance> GetattendanceByDate(DateTime dateofattendance, int tid)
         {
             var p = new DynamicParameters();
             p.Add("Sdate", dateofattendance, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("tid", tid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
             var result = _dbContext.Connection.Query<AllAttendance>("attendance_package.GetattendanceByDate", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
-        public  List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday)
+        public List<GetParentEmail_Attendance> GetParentEmail(DateTime dateofday, int tid)
         {
             var p = new DynamicParameters();
             p.Add("Sdate", dateofday, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("tid", tid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = _dbContext.Connection.Query<GetParentEmail_Attendance>("attendance_package.GetattendanceByDateWithParent", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
