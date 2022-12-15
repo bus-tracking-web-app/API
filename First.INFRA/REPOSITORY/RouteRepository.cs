@@ -1,15 +1,10 @@
 ﻿using Dapper;
 using First.CORE.COMMON;
-using First.CORE.DATA;
 using First.CORE.DTO;
 using First.CORE.REPOSITORY;
-using Microsoft.AspNetCore.Components.Routing;
-using Microsoft.AspNetCore.Routing;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 using Route = First.CORE.DATA.Route;
 
 namespace First.INFRA.REPOSITORY
@@ -69,12 +64,12 @@ namespace First.INFRA.REPOSITORY
         {
             var p = new DynamicParameters();
             p.Add("prouteid", route.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pXCURRENT", route.Xcurrent, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pYCURRENT", route.Ycurrent, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pXSTART", route.Xstart, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pYSTART", route.Ystart, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pXEND", route.Xend, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("pYEND", route.Yend, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("pXCURRENT", "null", dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pYCURRENT", "null", dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pXSTART", route.Xstart, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pYSTART", route.Ystart, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pXEND", route.Xend, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pYEND", route.Yend, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("pBUSID", route.Busid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             _dbContext.Connection.Execute("route_package.UPDATEroute", p, commandType: CommandType.StoredProcedure);
 
@@ -98,7 +93,7 @@ namespace First.INFRA.REPOSITORY
             _dbContext.Connection.Execute("SETCURRENTBUSLOCATION", p, commandType: CommandType.StoredProcedure);
 
         }
-         public void SetCureenBusLocationAftreEnf(int driverId)
+        public void SetCureenBusLocationAftreEnf(int driverId)
         {
             var p = new DynamicParameters();
             p.Add("driverId", driverId, dbType: DbType.Int32, direction: ParameterDirection.Input);
